@@ -1,0 +1,989 @@
+% \iffalse meta-comment ------------------------------------------------------
+%
+% Copyright (C) 2019 by Tuomas Välimäki
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of
+% LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Tuomas Välimäki.
+%
+% This work consists of the file beamerthemetuni.dtx and
+% the derived files beamerthemetuni.ins, beamerthemetuni.sty
+% and beamercolorthemetuni.sty.
+%
+% ------------------------------------------------------------------------ \fi
+% \iffalse
+%<*driver|package>
+\def\tuniversion{2019/02/10 v1.0}
+%</driver|package>
+%<*internal>
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX
+  \relax
+\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*batchfile>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+
+This is a generated file.
+
+Copyright (C) 2019 by Tuomas Välimäki
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either
+version 1.3 of this license or (at your option) any later
+version.  The latest version of this license is in:
+
+   http://www.latex-project.org/lppl.txt
+
+and version 1.3 or later is part of all distributions of
+LaTeX version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Tuomas Välimäki.
+
+This work consists of the file beamerthemetuni.dtx and
+the derived files beamerthemetuni.ins, beamerthemetuni.sty
+and beamercolorthemetuni.sty.
+
+\endpreamble
+\usedir{tex/latex/beamertheme-tuni}
+\generate{
+  \file{beamerthemetuni.sty}{\from{beamerthemetuni.dtx}{package}}
+  \file{beamercolorthemetuni.sty}{\from{beamerthemetuni.dtx}{palette}}
+}
+\obeyspaces
+\Msg{*****************************************************}
+\Msg{*                                                   *}
+\Msg{* To finish the installation you have to move the   *}
+\Msg{* following files into a directory searched by TeX: *}
+\Msg{*                                                   *}
+\Msg{*     beamerthemetuni.sty                           *}
+\Msg{*     beamercolorthemetuni.sty                      *}
+\Msg{*                                                   *}
+\Msg{* To produce the documentation run the file         *}
+\Msg{* beamerthemetuni.dtx through LaTeX.                *}
+\Msg{*                                                   *}
+\Msg{* Happy TeXing!                                     *}
+\Msg{*                                                   *}
+\Msg{*****************************************************}
+%</batchfile>
+%<batchfile>\endbatchfile
+%<*internal>
+\usedir{source/latex/beamertheme-tuni}
+\generate{
+  \file{beamerthemetuni.ins}{\from{beamerthemetuni.dtx}{batchfile}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\fi
+\nopreamble\nopostamble
+\usedir{doc/latex/beamertheme-tuni}
+\generate{
+  \file{mwe.tex}{\from{beamerthemetuni.dtx}{mwe}}
+  \file{beamerthemetuni-example.tex}{\from{beamerthemetuni.dtx}{example}}
+}
+\immediate\write18{pdflatex mwe}
+\endgroup
+%</internal>
+% ----------------------------------------------------------------------------
+%<*driver>
+\ProvidesFile{beamerthemetuni.dtx}[\tuniversion\space]
+\documentclass{ltxdoc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[colorlinks]{hyperref}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{beamerthemetuni.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \changes{v1.0}{2019/02/10}{Initial version}
+%
+% \GetFileInfo{beamerthemetuni.dtx}
+%
+% \title{The \textsf{beamertheme-tuni} package\thanks{This document
+%   corresponds to \textsf{beamertheme-tuni}~\fileversion, dated \filedate.}
+%   \large\url{https://github.com/tvalimaki/beamertheme-tuni}}
+% \author{Tuomas Välimäki \\ \texttt{tuomas.valimaki@tuni.fi}}
+%
+% \maketitle
+%
+% \begin{abstract}
+%   A theme for \textsf{beamer} presentations that follows the graphical
+%   guidelines of Tampere Universities (TUNI).
+% \end{abstract}
+%
+% \tableofcontents\vfil
+%
+% \section{Introduction}
+%
+% The \LaTeX\ package \textsf{beamertheme-tuni} provides a no-frills
+% \textsf{beamer} theme that follows the
+% \href{https://www.tuni.fi/en}{Tampere Universities} (TUNI) graphical
+% guidelines. The aim is to provide maximum space for content.
+%
+% \begin{itemize}
+%   \item supports all aspect ratios
+%   \item bilingual (finnish, english)
+% \end{itemize}
+%
+% \section{Usage}
+%
+% \subsection{Installation}
+% \label{sec:installation}
+%
+% Obtain the latest version of the \textsf{beamertheme-tuni} package from
+% \begin{quote}
+%   \url{https://github.com/tvalimaki/beamertheme-tuni}
+% \end{quote}
+% The recommended installation method is using the provided |Makefile|
+% described in the next section.
+%
+% \subsubsection{Using the provided \texttt{Makefile}}
+%
+% To extract the package, build this documentation, and an example
+% presentation, run |make all|. To install the files on the |texmf| tree in
+% |TEXMFHOME|, run |make install|. To undo, run |make uninstall|.
+%
+% \subsubsection{Manually}
+%
+% If for some reason the provided |Makefile| does not work for you, it is
+% possible to install the files manually. First, extract the package
+% definition by running
+% \begin{quote}
+%   |etex beamerthemetuni.dtx|
+% \end{quote}
+% This creates the files |beamerthemetuni.sty| and |beamercolorthemetuni.sty|.
+%
+% Next generate |pdf| versions of the graphics by running
+% \begin{quote}
+%   |find . -name '*.eps' -exec epstopdf {} \;|
+% \end{quote}
+%
+% In order for \TeX\ to find the package, it needs to be on the |texmf| tree.
+% By default, \TeX\ looks for files in three different locations:
+% \begin{itemize}
+%   \item The root |texmf| tree, which is usually located at
+%     |/usr/share/texmf/|, |/usr/local/texlive/texmf/|, |c:\texmf\|, or
+%     |c:\texlive\texmf\|.
+%   \item The local |texmf| tree, which is usually located at
+%     |/usr/local/share/texmf/|, |/usr/local/texlive/texmf-local/|,
+%     |c:\localtexmf\|, or |c:\texlive\texmf-local\|.
+%   \item Your personal |texmf| tree, which is usually located in your home
+%     directory at |~/texmf/| or |~/Library/texmf/|.
+% \end{itemize}
+%
+% You should install the package in your personal tree, or if you prefer, to
+% the local tree. Installation in the root tree can cause problems, since an
+% update of the whole \TeX\ installation will replace this entire tree.
+%
+% Inside whatever |texmf| directory you have chosen, create the
+% sub-sub-sub-directory
+% \begin{quote}
+%   |texmf/tex/latex/beamertheme-tuni|
+% \end{quote}
+% and place all |.sty| and both |.pdf| and |.eps| versions of the graphics
+% in this directory.
+%
+% Finally, you need to rebuild \TeX{}’s filename database. This is done by
+% running the command |texhash| or |mktexlsr|.
+%
+% To produce this documentation you can run
+% \begin{quote}
+%   |pdflatex --shell-escape beamerthemetuni.dtx|\\
+%   |makeindex -s gglo.ist -o beamerthemetuni.gls beamerthemetuni.glo|\\
+%   |makeindex -s gind.ist -o beamerthemetuni.ind beamerthemetuni.idx|\\
+%   |pdflatex beamerthemetuni.dtx|\\
+%   |pdflatex beamerthemetuni.dtx|
+% \end{quote}
+% and optionally place the created documentation in
+% \begin{quote}
+%   |texmf/doc/latex/beamertheme-tuni|
+% \end{quote}
+% for later reference.
+%
+% To produce an example presentation run
+% \begin{quote}
+%   |pdflatex beamerthemetuni-example.tex|\\
+%   |biber beamerthemetuni-example|\\
+%   |pdflatex beamerthemetuni-example.tex|\\
+%   |pdflatex beamerthemetuni-example.tex|
+% \end{quote}
+%
+% For a more detailed explanation of the standard installation process of
+% packages, you might wish to consult
+% \url{http://www.ctan.org/installationadvice/}.
+%
+% \subsection{Package options}
+%
+% \DescribeMacro{finnish} The package option |finnish| loads language support
+% for finnish and typesets the titlepage of the presentation with the finnish
+% logo. If not provided, the default language for the document and logo is
+% english.
+%
+% \DescribeMacro{sectionpages} The package option |sectionpages| starts each
+% section with a table of contents highlighting the current location in the
+% presentation. The sectionpage is set on a purple background.
+%
+% \DescribeMacro{purple} The frame option |purple| sets the slide background
+% to purple, foreground to white, and structure to blue. The selection can be
+% made per slide using
+% \begin{verbatim}
+%\begin{frame}[purple]{Frame title}
+%    Frame content.
+%\end{frame}
+% \end{verbatim}
+%
+% A custom text can be added to the frame footer by setting the
+% \textsf{beamer} template |frame footer|.
+% \begin{verbatim}
+%\setbeamertemplate{frame footer}{My custom footer}
+% \end{verbatim}
+%
+% \subsection{Minimal working example}
+%
+% The code to produce a presentation consisting of a titlepage and three
+% frames.
+% \VerbatimInput[frame=single]{mwe.tex}
+% results in the presentation
+% \vskip\medskipamount
+% \setlength{\fboxsep}{0pt}
+% \noindent\fbox{\includegraphics[width=.49\textwidth,page=1]{mwe.pdf}}
+% \hfil
+% \fbox{\includegraphics[width=.49\textwidth,page=2]{mwe.pdf}}
+% \vskip\smallskipamount
+% \noindent\fbox{\includegraphics[width=.49\textwidth,page=3]{mwe.pdf}}
+% \hfil
+% \fbox{\includegraphics[width=.49\textwidth,page=4]{mwe.pdf}}
+%
+% \medskip
+% \noindent A more in-depth example is provided in the derived file
+% \newline|beamerthemetuni-example.tex|. For instructions on how to generate
+% derived files, see Section~\ref{sec:installation}.
+%
+% \section{Bug tracker}
+%
+% Use the GitHub issue tracker on
+% \begin{quote}
+%   \url{https://github.com/tvalimaki/beamertheme-tuni/issues}
+% \end{quote}
+% to report bugs and submit feature requests.
+%
+% \StopEventually{%
+%   \PrintChanges
+%   \PrintIndex
+% }
+%
+% \section{Implementation}
+%
+% \subsection{File \texttt{beamerthemetuni.sty}}
+% \iffalse -------------------------------------------------------------------
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemetuni}[\tuniversion\space Beamer theme TUNI]
+% \fi
+%
+% \subsubsection{Package dependencies}
+%
+% Start by introducing required packages. Use Open Sans and Beramono fonts.
+%
+%    \begin{macrocode}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[default,scale=0.95]{opensans}
+\RequirePackage[scaled]{beramono}
+\RequirePackage{graphicx}
+%    \end{macrocode}
+%
+% \subsubsection{Package options}
+%
+% \begin{macro}{finnish}
+% \begin{macro}{sectionpages}
+%
+%   The package declares two options, |finnish| and |sectionpages|, introduced
+%   in Sections~\ref{sec:language} and~\ref{sec:sectionpages} respectfully.
+%
+%    \begin{macrocode}
+\newif\if@doSectionPage
+\@doSectionPagefalse
+\DeclareOption{sectionpages}{\@doSectionPagetrue}
+\newif\if@languageFinnish
+\@languageFinnishfalse
+\DeclareOption{finnish}{\@languageFinnishtrue}
+\ProcessOptions\relax
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{Language support}
+% \label{sec:language}
+%
+% \begin{macro}{finnish}
+% \begin{macro}{tuni@graphic}
+%
+%   The package option |finnish| loads finnish language support, otherwise
+%   english language support is loaded. The option also affects the logo that
+%   is used on the titlepage.
+%
+%    \begin{macrocode}
+\if@languageFinnish
+  \RequirePackage[finnish]{babel}
+  \def\tuni@graphic{tau-logo-fin}
+\else
+  \RequirePackage[english]{babel}
+  \def\tuni@graphic{tau-logo-eng}
+\fi
+\RequirePackage{csquotes}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{Colors}
+%
+% This and all the following Sections affect only the presentation mode.
+%
+%    \begin{macrocode}
+\mode
+<presentation>
+%    \end{macrocode}
+%
+% Use the color theme presented later in Section~\ref{sec:palette}.
+%
+%    \begin{macrocode}
+\usecolortheme{tuni}
+%    \end{macrocode}
+%
+% \subsubsection{Fonts}
+%
+% Define all the fonts used in the presentation
+%
+%    \begin{macrocode}
+\setbeamerfont{title}{size=\huge}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{date}{size=\large}
+\setbeamerfont{author}{size=\large}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{normal text}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\large}
+\setbeamerfont{page number in head/foot}{size=\scriptsize}
+\AtBeginDocument{\usebeamerfont{normal text}}
+%    \end{macrocode}
+%
+% \subsubsection{Frame background}
+%
+% \begin{macro}{purple}
+%
+%   The color of the slide is inherited from the background of |normal text|,
+%   so we set that at the beginning of each slide. We define a key |purple| to
+%   change the slide background to purple, foreground to white, and structure
+%   to blue.
+%
+%    \begin{macrocode}
+\BeforeBeginEnvironment{frame}{%
+  \setbeamercolor{normal text}{fg=black,bg=white}%
+  \usebeamercolor[fg]{normal text}%
+  \setbeamercolor{structure}{fg=tuniPurple}%
+}
+\define@key{beamerframe}{purple}[true]{%
+  \setbeamercolor{normal text}{fg=white,bg=tuniPurple}%
+  \usebeamercolor[fg]{normal text}%
+  \setbeamercolor{structure}{fg=tuniBlue}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% Remove logo from its default position on right sidebar and disable
+% navigation symbols.
+%
+%    \begin{macrocode}
+\setbeamertemplate{sidebar right}{default}{}
+\usenavigationsymbolstemplate{}
+%    \end{macrocode}
+%
+% \subsubsection{Sectionpages}
+% \label{sec:sectionpages}
+%
+% \begin{macro}{sectionpages}
+%
+%   The package option |sectionpages| inserts a frame with current outline at
+%   beginning of sections on a purple frame.
+%
+%    \begin{macrocode}
+\if@doSectionPage
+\AtBeginSection[]{%
+  \begin{frame}[purple]{\contentsname}
+    \tableofcontents[current]
+  \end{frame}
+}
+\fi
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{Footer}
+%
+% Set the footer to an optional custom footer text and a page number. Use the
+% page numbering scheme |appendixframenumber|, which shows current
+% slide out of all slides, where appendix slides are numbered separately.
+%
+%    \begin{macrocode}
+\setbeamertemplate{frame footer}{}
+\setbeamertemplate{page number in head/foot}[appendixframenumber]
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[%
+    wd=\textwidth,ht=4ex,dp=3ex,leftskip=\Gm@lmargin,rightskip=3ex
+  ]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \usebeamercolor[fg]{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill%
+    \usebeamertemplate{page number in head/foot}
+  \end{beamercolorbox}%
+}
+%    \end{macrocode}
+%
+% \subsubsection{Lists}
+%
+% Make covered items transparent, not invisible, by default.
+%
+%    \begin{macrocode}
+\setbeamercovered{transparent}
+%    \end{macrocode}
+%
+% \subsubsection{Titlepage}
+%
+% \begin{macro}{\titlegraphic}
+%
+%   Define the titlegraphic as the TUNI logo. The language of the logo depends
+%   on the package option |finnish|. Either |eps| or |pdf| versions of the
+%   files |tau-logo-fin| or |tau-logo-eng| need to be in a location where
+%   \LaTeX\ can find them.
+%
+%    \begin{macrocode}
+\titlegraphic{\includegraphics[height=0.2\paperheight]{\tuni@graphic}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{tuni@lmargin}
+% \begin{macro}{tuni@sep}
+%
+%   Specify the distance of the purple rectange from the left margin
+%   |tuni@lmargin|, and the separation of the titlepage entries from the
+%   rectange |tuni@sep|.
+%
+%    \begin{macrocode}
+\newlength{\tuni@lmargin}
+\setlength{\tuni@lmargin}{.079\paperheight}
+\newlength{\tuni@sep}
+\setlength{\tuni@sep}{1.55em}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\maketitle}
+% \begin{macro}{\titlepage}
+%
+%   Define the layout of the titlepage and the commands used to insert it into
+%   the presentation.
+%
+%    \begin{macrocode}
+\def\maketitle{\ifbeamer@inframe\titlepage\else\frame[plain]{\titlepage}\fi}
+\def\titlepage{\usebeamertemplate{title page}}
+\setbeamertemplate{title page}{%
+  \vskip-\beamer@frametopskip%
+  \begin{beamercolorbox}[ht=.2\paperheight,wd=\paperwidth]{titlegraphic}%
+    \inserttitlegraphic
+  \end{beamercolorbox}%
+  \nointerlineskip\hfill%
+  \hskip\dimexpr\tuni@lmargin-\Gm@lmargin\relax%
+  \begin{beamercolorbox}[%
+    ht=.8\paperheight,
+    wd=\dimexpr\paperwidth-\tuni@lmargin\relax,
+    sep=\tuni@sep,
+    vmode
+  ]{title}%
+    \vbox to \dimexpr.8\paperheight-2\tuni@sep\relax{%
+      \usebeamerfont{title}\MakeUppercase{\inserttitle}\par
+      \ifx\insertsubtitle\@empty%
+      \else{%
+        \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}
+        \insertsubtitle\par
+      }\fi%
+      \vskip1em%
+      {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+      \vfil%
+      {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+      {%
+        \usebeamerfont{institute}\usebeamercolor[fg]{institute}
+        \insertinstitute\par
+      }
+      \vfil%
+    }%
+  \end{beamercolorbox}%
+  \hskip-\Gm@rmargin%
+  \hfill%
+  \hfill%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{Use with \textsf{biblatex}}
+%
+% Make \textsf{beamer} play nice with \textsf{biblatex}. Require
+% \textsf{silence} to silence pesky warning messages that the user should not
+% concern themselves with.
+%
+%    \begin{macrocode}
+\AtEndPreamble{%
+\@ifpackageloaded{biblatex}{%
+  \RequirePackage{silence}
+  \WarningFilter{biblatex}{Patching footnotes failed}
+  \defbibheading{bibliography}[\bibname]{}
+
+  \setbeamertemplate{bibliography item}{%
+    \ifboolexpr{%
+      test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
+      or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
+      or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}}
+    }{%
+      \setbeamertemplate{bibliography item}[book]
+    }{%
+      \ifentrytype{online}{%
+        \setbeamertemplate{bibliography item}[online]
+      }{%
+        \setbeamertemplate{bibliography item}[article]
+      }%
+    }%
+    \usebeamertemplate{bibliography item}}
+
+  \defbibenvironment{bibliography}{%
+    \list{}{%
+      \settowidth{\labelwidth}{\usebeamertemplate{bibliography item}}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+    }%
+  }{%
+    \endlist%
+  }{%
+    \item%
+  }}{}%
+}
+%    \end{macrocode}
+%
+% Exit presentation mode.
+%
+%    \begin{macrocode}
+\mode
+<all>
+%    \end{macrocode}
+% \iffalse
+%</package>
+% ------------------------------------------------------------------------ \fi
+%
+% \subsection{File \texttt{beamercolorthemetuni.sty}}
+% \label{sec:palette}
+%
+% \iffalse
+%<*palette>
+% \fi
+%
+% Define the colors introduced in TUNI graphical guidelines and set the color
+% of all the elements in the presentation.
+%
+%    \begin{macrocode}
+\mode
+<presentation>
+
+\definecolor{tuniPurple}{RGB}{78,0,142}
+\definecolor{tuniBlue}{RGB}{130,200,240}
+\definecolor{tuniRed}{RGB}{240,115,135}
+\definecolor{tuniPink}{RGB}{245,165,200}
+\definecolor{tuniGreen}{RGB}{125,205,190}
+\definecolor{tuniYellow}{RGB}{255,220,165}
+\definecolor{tuniGrey}{RGB}{200,200,200}
+
+\setbeamercolor{structure}{fg=tuniPurple}
+\setbeamercolor{alerted text}{fg=tuniRed}
+\setbeamercolor{example text}{fg=tuniGreen}
+
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!50}
+\setbeamercolor*{palette tertiary}{use=structure,fg=structure!50}
+\setbeamercolor*{palette quaternary}{use=structure,fg=tuniGrey,bg=black}
+
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!30}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor{title}{fg=white,bg=tuniPurple}
+\setbeamercolor{subtitle}{fg=tuniBlue}
+\setbeamercolor{date}{parent=subtitle}
+\setbeamercolor{author}{parent=title}
+\setbeamercolor{institute}{parent=subtitle}
+\setbeamercolor{titlegraphic}{fg=tuniPurple,bg=white}
+
+\setbeamercolor{frametitle}{parent=structure}
+\setbeamercolor{normal text}{fg=black,bg=white}
+
+\setbeamercolor{block title}{fg=tuniPurple}
+\setbeamercolor{block title example}{fg=tuniGreen}
+\setbeamercolor{block title alerted}{fg=tuniRed}
+
+\setbeamercolor{note page}{fg=black,bg=white}
+\setbeamercolor{note title}{parent=palette primary}
+\setbeamercolor{note date}{parent=note title}
+
+\setbeamercolor{page number in head/foot}{parent=palette tertiary}
+\setbeamercolor{footnote}{use=normal text,fg=normal text.fg!70!normal text.bg}
+\setbeamercolor{footnote mark}{fg=.}
+
+\mode
+<all>
+%    \end{macrocode}
+% \iffalse
+%</palette>
+% ----------------------------------------------------------------------------
+%<*mwe>
+\documentclass{beamer}
+\usetheme{tuni}
+
+\title{Minimal working example}
+\subtitle{Subtitle}
+\author{Author Name}
+\institute{Affiliation}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Frame title}
+    \begin{itemize}
+        \item Frame content
+        \item More content
+    \end{itemize}
+\end{frame}
+\begin{frame}{Frame title}
+    \begin{block}{Block}
+        Content
+    \end{block}
+    \begin{exampleblock}{Example}
+        Content
+    \end{exampleblock}
+    \begin{alertblock}{Alert}
+        Content
+    \end{alertblock}
+\end{frame}
+\begin{frame}[purple]{Frame title}
+    Frame \alert{content}.
+\end{frame}
+\end{document}
+%</mwe>
+% ----------------------------------------------------------------------------
+%<*example>
+\documentclass[aspectratio=169,sectionpages]{beamer}
+% options: finnish, sectionpages
+
+\usetheme{tuni}
+
+\usepackage[style=authoryear,backend=biber]{biblatex}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{listings}
+\lstset{%
+  basicstyle=\ttfamily\bfseries,
+  language={[LaTeX]TeX},
+  texcsstyle=*\usebeamercolor[fg]{structure},
+  moretexcs={setbeamertemplate},
+  emph={purple},
+  emphstyle=\color{tuniYellow},
+}
+
+% For notes on second screen you'll need pgfpages and a suitable pdf viewer
+% i.e. dspdfviewer
+% \usepackage{pgfpages}
+% \setbeameroption{show notes on second screen}
+% \setbeameroption{show notes}
+
+\usepackage{filecontents}
+\begin{filecontents}{\jobname.bib}
+@book{hoenig1999,
+  author={Hoenig, Alan},
+  title={TEX Unbound: Latex and TEX Strategies for Fonts, Graphics and More},
+  year={1999},
+  month={2},
+  publisher={Oxford University Press, Inc.}
+}
+@misc{tantau2018,
+  title={The BEAMER class: User Guide for version 3.55},
+  author={Tantau, Till and Wright, Joseph and Mileti{\'c}, Vedran},
+  year={2018},
+  month={12},
+}
+@online{tunigraphic,
+  title={Graphic guidelines},
+  author={{Tampere Universities}},
+  note={Tampere3-info > Esittelymateriaalit > Ohjeistuksia ilmeen käyttöön >
+        Graafinen perusohje},
+  year={2018},
+  month={11},
+}
+\end{filecontents}
+\addbibresource{\jobname.bib}
+
+\title{beamertheme-tuni}
+\subtitle{A theme for typesetting presentation slides using \LaTeX{}}
+\author{Tuomas Välimäki \\ \small{tuomas.valimaki@tuni.fi}}
+\institute{Automation Technology and Mechanical Engineering\\
+           Tampere University}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Outline}
+\begin{frame}[purple]{\contentsname}
+    \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\subsection{Main features}
+\begin{frame}[containsverbatim]{Main features}
+  \alert{A no-frills Beamer theme} that follows the
+  \emph{Tampere Universities} (TUNI) graphical guidelines. The aim is to
+  provide maximum space for content.
+
+  \begin{itemize}
+    \item supports all aspect ratios
+    \item bilingual (finnish, english)
+    \begin{itemize}
+      \item load the theme using \verb|\usetheme[finnish]{tuni}| to get
+        finnish language support and logo
+    \end{itemize}
+  \end{itemize}
+  \bigskip
+  Get the source of the newest version from
+  \begin{center}\url{https://github.com/tvalimaki/tuni-beamer}\end{center}
+\end{frame}
+
+\note{%
+  This is how a note page looks like if you use the beameroptions
+  ``show notes'' or ``show notes on second screen''
+}
+
+\subsection{Colors}
+\begin{frame}{Colors}
+  \framesubtitle{1/2}
+  \begin{columns}
+  \begin{column}{0.475\textwidth}
+    All colors introduced in TUNI graphic guidelines are predefined.
+  \end{column}
+  \begin{column}{0.475\textwidth}
+  \begin{block}{Primary color:}
+  \smallskip
+  \begin{tikzpicture}[%
+    inner sep=0pt,
+    outer sep=0pt,
+    every node/.append style={
+      rectangle,
+      font=\scriptsize,
+      minimum height=6ex,
+      minimum width=19ex},
+    ball/.style={circle, minimum size=4ex, color=white},
+    every label/.append style={align=left, minimum width=0pt, outer sep=4pt}
+  ]
+    \node[fill=tuniPurple,label=east:tuniPurple\\{(78,0,142)}] (1) {};
+    \node[ball,fill=tuniPurple!50,below of=1,node distance=0pt] (50) {50\%};
+    \node[ball,fill=tuniPurple!75,left of=50,node distance=6ex] (75) {75\%};
+    \node[ball,fill=tuniPurple!30,right of=50,node distance=6ex] (30) {30\%};
+  \end{tikzpicture}
+  \end{block}
+
+  \begin{block}{Secondary colors:}
+  \smallskip
+  \begin{tikzpicture}[%
+    node distance=15ex,
+    every node/.append style={rectangle, font=\scriptsize, minimum size=4ex},
+    every label/.append style={align=left}
+  ]
+    \node[fill=tuniBlue,label=east:tuniBlue\\
+      {(130,200,240)}] (1) {};
+    \node[fill=tuniRed,label=east:tuniRed\\
+      {(240,115,135)},right of=1] (2) {};
+    \node[fill=tuniPink,label=east:tuniPink\\
+      {(245,165,200)},below of=1,node distance=5ex] (3) {};
+    \node[fill=tuniGreen,label=east:tuniGreen\\
+      {(125,205,190)},right of=3] (4) {};
+    \node[fill=tuniYellow,label=east:tuniYellow\\
+      {(255,220,165)},below of=3,node distance=5ex] (5) {};
+    \node[fill=tuniGrey,label=east:tuniGrey\\
+      {(200,200,200)},right of=5] (6) {};
+  \end{tikzpicture}
+  \end{block}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim,purple]{Colors}
+  \framesubtitle{2/2}
+  The theme offers an optional dark slide background\footnote{Nothing like a
+  little change to spruce things up.}.
+  The selection can be made per slide using:
+
+  \begin{lstlisting}
+  \begin{frame}[purple]{Frame title}
+      Frame content.
+  \end{frame}
+  \end{lstlisting}
+\end{frame}
+
+\subsection{Font}
+\begin{frame}{Typeface}
+  The theme uses Open Sans\footnote{A humanist sans-serif typeface designed by
+  Steve Matteson and commissioned by Google.} as the default font.
+  The available font weights are:
+
+  \begin{description}
+    \item[light] {\fontseries{l}\selectfont Lorem ipsum dolor sit amet}
+    \item[medium] {\fontseries{m}\selectfont Lorem ipsum dolor sit amet}
+    \item[semibold] {\fontseries{sb}\selectfont Lorem ipsum dolor sit amet}
+    \item[bold] {\fontseries{b}\selectfont Lorem ipsum dolor sit amet}
+    \item[extrabold] {\fontseries{eb}\selectfont Lorem ipsum dolor sit amet}
+  \end{description}
+
+  The typewriter/monospaced font is Bera Mono\footnote{A version of Bitstream
+  Vera Mono slightly enhanced for use with \TeX{}}.
+
+  \begin{description}
+    \item[medium] \texttt{Lorem ipsum dolor sit amet}
+    \item[bold] \textbf{\texttt{Lorem ipsum dolor sit amet}}
+  \end{description}
+\end{frame}
+
+\section{Example environments}
+\subsection{Figures and tables}
+\begin{frame}{Figures}
+  \begin{figure}
+    \includegraphics[width=.5\textwidth]{example-image-a}
+    \caption{The first letter in the alphabet.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Tables}
+  \begin{table}
+    \caption{QS World University Rankings 2018}
+    \begin{tabular}{l c}
+      \toprule
+      \textbf{University} & \textbf{Ranking} \\
+      \midrule
+      University of Helsinki & 102 \\
+      Aalto University & 137 \\
+      University of Turku & 276 \\
+      University of Jyväskylä & 357 \\
+      \textbf{Tampere University of Technology} & \textbf{380} \\
+      University of Oulu & 411--420 \\
+      University of Eastern Finland & 451--460 \\
+      Lappeenranta University of Technology & 501--550 \\
+      Åbo Akademi & 551--600 \\
+      \textbf{University of Tampere} & \textbf{551--600} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\subsection{Equations}
+\begin{frame}{Equations}
+  \begin{equation*}
+    f(x|\mu,\sigma^2) =
+      \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+  \end{equation*}
+\end{frame}
+
+\subsection{Blocks}
+\begin{frame}{Block environments}
+  \begin{columns}[t]
+  \column{0.6\textwidth}
+  \begin{theorem}
+      There is no largest prime number.
+  \end{theorem}
+  \begin{proof}
+  \begin{enumerate}
+    \item<1-| alert@1> Suppose $p$ were the largest prime number.
+    \item<2-> Let $q$ be the product of the first $p$ numbers.
+    \item<3-> Then $q+1$ is not divisible by any of them.
+    \item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
+      number not in the first $p$ numbers.\qedhere
+  \end{enumerate}
+  \end{proof}
+
+  \column{0.35\textwidth}
+  \begin{exampleblock}{Example}
+    This is an example
+  \end{exampleblock}
+  \begin{alertblock}{Note}
+    This is important
+  \end{alertblock}
+  \end{columns}
+\end{frame}
+
+\subsection{Footer}
+{
+\setbeamertemplate{frame footer}{My custom footer}
+\begin{frame}[containsverbatim]{Footer}
+  To add custom footer text
+  \begin{lstlisting}
+  \setbeamertemplate{frame footer}{My custom footer}
+  \end{lstlisting}
+\end{frame}
+}
+
+\section*{Further reading}
+\begin{frame}[purple]{Further reading}
+  \nocite{*}
+  \printbibliography[heading=none]
+\end{frame}
+
+\appendix
+\begin{frame}{\appendixname}
+  Extra slides that are not part of the main presentation
+  and are numbered separately.
+\end{frame}
+\end{document}
+%</example>
+% \fi
+% \Finale
+\endinput
