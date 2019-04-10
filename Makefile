@@ -28,6 +28,7 @@ distclean: clean
 	rm -f $(NAME).{pdf,sty,ins} beamercolorthemetuni.sty
 	rm -f $(NAME)-example.{tex,pdf}
 	rm -f tau-logo-{fin,eng}.pdf
+	rm -rf $(PKGNAME).tds.zip
 install: all
 	mkdir -p $(TEXMFHOME)/{tex,source,doc}/latex/$(PKGNAME)
 	cp $(NAME).dtx $(NAME).ins $(TEXMFHOME)/source/latex/$(PKGNAME)
@@ -40,3 +41,11 @@ uninstall:
 	rm -r $(TEXMFHOME)/{tex,source,doc}/latex/$(PKGNAME)
 	rm $(TEXMFHOME)/tex/generic/tuni-logos/tau-logo-{fin,eng}.{eps,pdf}
 	mktexlsr
+release: all
+	mkdir -p {tex,source,doc}/latex/$(PKGNAME)
+	cp $(NAME).dtx $(NAME).ins source/latex/$(PKGNAME)
+	cp $(NAME).sty beamercolorthemetuni.sty tex/latex/$(PKGNAME)
+	mkdir -p tex/generic/tuni-logos
+	cp tau-logo-{fin,eng}.{eps,pdf} tex/generic/tuni-logos
+	cp $(NAME).pdf doc/latex/$(PKGNAME)
+	zip -rm $(PKGNAME).tds.zip tex source doc
