@@ -384,6 +384,7 @@ and beamercolorthemetuni.sty.
 \setbeamerfont{subtitle}{size=\large}
 \setbeamerfont{date}{size=\large}
 \setbeamerfont{author}{size=\large}
+\setbeamerfont{email}{size=\footnotesize,series=\tt}
 \setbeamerfont{institute}{size=\footnotesize}
 \setbeamerfont{normal text}{size=\normalsize}
 \setbeamerfont{frametitle}{size=\Large}
@@ -503,6 +504,15 @@ and beamercolorthemetuni.sty.
 % \end{macro}
 % \end{macro}
 %
+% \begin{macro}{\email}
+%
+%   A new email token is added to typeset authors' emails.
+%
+%    \begin{macrocode}
+\newtoks\email
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\maketitle}
 % \begin{macro}{\titlepage}
 %
@@ -536,6 +546,13 @@ and beamercolorthemetuni.sty.
       {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
       \vfil%
       {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+      \ifx\the\email\@empty%
+      \else%
+          {%
+              \usebeamerfont{email}\usebeamercolor[fg]{email}
+              \href{mailto:\the\email}{\the\email}\par
+          }
+      \fi%
       {%
         \usebeamerfont{institute}\usebeamercolor[fg]{institute}
         \insertinstitute\par
@@ -654,6 +671,7 @@ and beamercolorthemetuni.sty.
 \setbeamercolor{subtitle}{fg=tuniBlue}
 \setbeamercolor{date}{parent=subtitle}
 \setbeamercolor{author}{parent=title}
+\setbeamercolor{email}{parent=author}
 \setbeamercolor{institute}{parent=subtitle}
 \setbeamercolor{titlegraphic}{fg=tuniPurple,bg=white}
 
@@ -766,7 +784,8 @@ and beamercolorthemetuni.sty.
 
 \title{beamertheme-tuni}
 \subtitle{A theme for typesetting presentation slides using \LaTeX{}}
-\author{Tuomas Välimäki \\ \small{tuomas.valimaki@tuni.fi}}
+\author{Tuomas Välimäki}
+\email{tuomas.valimaki@tuni.fi}
 \institute{Automation Technology and Mechanical Engineering\\
            Tampere University}
 \date{\today}
