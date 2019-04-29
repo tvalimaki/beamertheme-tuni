@@ -47,5 +47,5 @@ release: all
 	cp $(NAME).sty beamercolorthemetuni.sty tex/latex/$(PKGNAME)
 	mkdir -p tex/generic/tuni-logos
 	cp tau-logo-{fin,eng}.{eps,pdf} tex/generic/tuni-logos
-	cp $(NAME).pdf doc/latex/$(PKGNAME)
+	cp $(NAME).pdf $(NAME)-example.{tex,pdf} doc/latex/$(PKGNAME)
 	zip -rm $(PKGNAME).tds.zip tex source doc
