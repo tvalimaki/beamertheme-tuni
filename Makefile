@@ -16,10 +16,10 @@ $(NAME): $(NAME).dtx
 	pdflatex $(NAME).dtx
 	pdflatex $(NAME).dtx
 example: $(NAME)
-	pdflatex beamerthemetuni-example.tex
-	biber beamerthemetuni-example
-	pdflatex beamerthemetuni-example.tex
-	pdflatex beamerthemetuni-example.tex
+	pdflatex $(NAME)-example.tex
+	biber $(NAME)-example
+	pdflatex $(NAME)-example.tex
+	pdflatex $(NAME)-example.tex
 clean:
 	rm -f $(NAME).{aux,glo,gls,idx,ilg,ind,log,out,toc}
 	rm -f $(NAME)-example.{aux,bbl,bcf,bib,blg,log,nav,out,run.xml,snm,toc}
@@ -28,8 +28,8 @@ distclean: clean
 	rm -f $(NAME).{pdf,sty,ins} beamercolorthemetuni.sty
 	rm -f $(NAME)-example.{tex,pdf}
 	rm -f tau-logo-{fin,eng}.pdf
-	rm -rf $(PKGNAME).tds.zip
-install: all
+	rm -f $(PKGNAME).tds.zip
+install: logo $(NAME) clean
 	mkdir -p $(TEXMFHOME)/{tex,source,doc}/latex/$(PKGNAME)
 	cp $(NAME).dtx $(NAME).ins $(TEXMFHOME)/source/latex/$(PKGNAME)
 	cp $(NAME).sty beamercolorthemetuni.sty $(TEXMFHOME)/tex/latex/$(PKGNAME)
