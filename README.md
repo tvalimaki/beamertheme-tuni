@@ -30,7 +30,7 @@ This creates the files `beamerthemetuni.sty` and `beamercolorthemetuni.sty`.
 Next generate pdf versions of the graphics by running
 
 ```bash
-find . -name ’*.eps’ -exec epstopdf {} \;
+find . -name ’*.eps’ -exec epstopdf --gsopt=-dCompatibilityLevel=1.5 {} \;
 ```
 
 In order for TeX to find the package, it needs to be on the `texmf` tree. By default, TeX looks for files in three different locations:

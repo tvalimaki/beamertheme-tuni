@@ -8,7 +8,8 @@ sty: $(NAME).dtx
 all: logo $(NAME) example clean
 	@exit 0
 logo: tau-logo-*.eps
-	find . -name 'tau-logo-*.eps' -exec epstopdf {} \;
+	find . -name 'tau-logo-*.eps' -exec \
+		epstopdf --gsopt=-dCompatibilityLevel=1.5 {} \;
 $(NAME): $(NAME).dtx
 	pdflatex --shell-escape $(NAME).dtx
 	makeindex -s gglo.ist -o $(NAME).gls $(NAME).glo
