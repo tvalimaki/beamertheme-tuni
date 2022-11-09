@@ -1,6 +1,6 @@
 % \iffalse meta-comment ------------------------------------------------------
 %
-% Copyright (C) 2019 by Tuomas Välimäki
+% Copyright (C) 2019-2022 by Tuomas Välimäki
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either
@@ -23,7 +23,7 @@
 % ------------------------------------------------------------------------ \fi
 % \iffalse
 %<*driver|package>
-\def\tuniversion{2019/07/29 v1.1}
+\def\tuniversion{2022/11/09 v1.2}
 %</driver|package>
 %<*internal>
 \def\nameofplainTeX{plain}
@@ -41,7 +41,7 @@
 
 This is a generated file.
 
-Copyright (C) 2019 by Tuomas Välimäki
+Copyright (C) 2019-2022 by Tuomas Välimäki
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either
@@ -401,22 +401,33 @@ and beamercolorthemetuni.sty.
 %
 % \begin{macro}{purple}
 %
-%   The color of the slide is inherited from the background of |normal text|,
-%   so we set that at the beginning of each slide. We define a key |purple| to
-%   change the slide background to purple, foreground to white, and structure
-%   to blue.
+%   \changes{v1.2}{2022/11/09}{Fix the way backgrounds are set}
+%
+%   The color of the slide is inherited from the background of |normal text|.
+%   We define a key |purple| to change the slide background to purple,
+%   foreground to white, and structure to blue.
+%
+%   In order to make this work, we need to patch |\setkeys| to be nestable.
 %
 %    \begin{macrocode}
-\BeforeBeginEnvironment{frame}{%
-  \setbeamercolor{normal text}{fg=black,bg=white}%
-  \usebeamercolor[fg]{normal text}%
-  \setbeamercolor{structure}{fg=tuniPurple}%
-}
+\let\my@setkeys@orig\setkeys
+\def\setkeys{\expandafter\my@setkeys@aux\expandafter{\KV@prefix}}
+\long\def\my@setkeys@aux#1#2#3{\my@setkeys@orig{#2}{#3}\def\KV@prefix{#1}}
+
+\newif\if@purpleFrame
 \define@key{beamerframe}{purple}[true]{%
+  \@purpleFrametrue
+  \begingroup
   \setbeamercolor{normal text}{fg=white,bg=tuniPurple}%
   \usebeamercolor[fg]{normal text}%
   \setbeamercolor{structure}{fg=tuniBlue}%
 }
+\pretocmd{\beamer@reseteecodes}{%
+  \if@purpleFrame
+    \endgroup
+    \@purpleFramefalse
+  \fi
+}{}{}
 %    \end{macrocode}
 % \end{macro}
 %

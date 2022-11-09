@@ -83,7 +83,7 @@ For a more detailed explanation of the standard installation process of packages
 
 ## License
 
-Copyright (C) 2019 by Tuomas Välimäki
+Copyright (C) 2019-2022 by Tuomas Välimäki
 
 This work may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3 of this license or (at your option) any later version. The latest version of this license is in:
 
